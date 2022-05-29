@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tareas CRUD</title>
+    <link rel="stylesheet" href="css/site.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+
+    <h1 style="text-align: center;">Listado de tareas - Proyecto Newsan.</h1>
+
+
+    <h3>Agregar nueva tarea</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <label>Descrition</label>
+                        <input id="description" name="description" type="text" class="form-control input-sm" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <label>State</label>
+                        <input type="text" class="form-control input-sm" id="state" name="state" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <label>Photo</label>
+                        <input type="text" class="form-control input-sm" id="photo" name="photo" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        <label for=""></label>
+                        <button class="btn btn-success" type="submit" value="Add">Agregar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+
+    <div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <label>Descrition</label>
+                            <input id="edit-description" name="edit-description" type="text" class="form-control input-sm" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <label>State</label>
+                            <input type="text" class="form-control input-sm" id="edit-state" name="edit-state" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <label>Photo</label>
+                            <input type="text" class="form-control input-sm" id="edit-photo" name="edit-photo" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <div class="col-lg-12">
+                            <label for=""></label>
+                            <button class="btn btn-success" type="submit" value="Add">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <button class="btn btn-succes" type="submit" value="Save">Guardar</button>
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <div class="row">
+        <h3>Filtros</h3>
+    
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="col-lg-12">
+                    <label for="">State</label>
+                    <select name="filtroEstado" id="filtroEstado" class="form-select" >
+                        <option ></option>
+                        <option value="pendiente" >pendiente</option>
+                        <option value="resuelta">realizada </option>
+                      </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-lg-12">
+                    <label>Description</label>
+                    <input id="filtroDescription" name="filtroDescription" type="text" class="form-control input-sm" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <div class="col-lg-12">
+                    <label></label>
+                    <button id="btnFiltrar"  class="btn btn-warning"  onclick="filtrarDatos()">Filtrar</button>
+                </div>
+            </div>
+        </div>
+        
+    
+        </div>
+
+    <p id="counter"></p>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Description</th>
+            <th>State</th>
+            <th>Photo</th>
+            <th></th>
+            <th>Actions</th>
+            <th></th>
+        </tr>
+        <tbody id="todos"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        getItems();
+
+        filtrarDatos();
+
+       
+    </script>
+    </div>
+</body>
+</html>
